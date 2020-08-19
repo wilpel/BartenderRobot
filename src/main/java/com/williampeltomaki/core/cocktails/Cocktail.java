@@ -1,10 +1,10 @@
 package com.williampeltomaki.core.cocktails;
 
-import java.util.List;
+import java.util.Map;
 
 public interface Cocktail {
 
-	List<LiquorType> getIngredients();
+	Map<LiquorType, Integer> getIngredients();
 	CocktailType getType();
 	
 }

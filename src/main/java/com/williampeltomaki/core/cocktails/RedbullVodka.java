@@ -1,12 +1,12 @@
 package com.williampeltomaki.core.cocktails;
 
-import java.util.List;
+import java.util.Map;
 
 public class RedbullVodka implements Cocktail {
 
 	@Override
-	public List<LiquorType> getIngredients() {
-		return List.of(LiquorType.RED_BULL, LiquorType.VODKA);
+	public Map<LiquorType, Integer> getIngredients() {
+		return Map.of(LiquorType.RED_BULL, 4, LiquorType.VODKA, 1);
 	}
 
 	@Override

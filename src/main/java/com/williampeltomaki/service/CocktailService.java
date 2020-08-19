@@ -1,6 +1,5 @@
 package com.williampeltomaki.service;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,15 +26,27 @@ public class CocktailService {
 			new VodkaShot(),
 			new RedbullVodka());
 	
-	private HashMap<String, LiquorType> liquorStore = new HashMap<>();
+	private HashMap<LiquorType, String> liquorStore = new HashMap<>();
 	
-	public void makeCocktail() {
-		try {
-		String command = "python run.py 11 5";
-		Process p = Runtime.getRuntime().exec(command);
-		}catch (Exception e) {
-			e.printStackTrace();
+	public void makeCocktail(CocktailType cocktailType) {
+		loadCocktailProperties();
+		Cocktail cocktail = getCocktailByType(cocktailType);
+		
+		for(java.util.Map.Entry<LiquorType, Integer> entry : cocktail.getIngredients().entrySet()) {
+			System.out.println(entry);
+			pourLiquid(Integer.parseInt(liquorStore.get(entry.getKey())), entry.getValue());
 		}
+		
+	}
+	
+	private void pourLiquid(int pumpNumber, int duration) {
+		System.out.println("Pouring on pump " + pumpNumber + " for " + duration + "seconds");
+		try {
+			String command = "python run.py " + pumpNumber + " " + duration;
+			Process p = Runtime.getRuntime().exec(command);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
 	
 	public List<CocktailType> getAvailableCocktails() {
@@ -54,8 +65,8 @@ public class CocktailService {
 	}
 	
 	private boolean canMakeCocktail(Cocktail cocktail) {
-		for(LiquorType c : cocktail.getIngredients()) {
-			if(!liquorStore.values().contains(c)) {
+		for(LiquorType c : cocktail.getIngredients().keySet()) {
+			if(!liquorStore.keySet().contains(c)) {
 				return false;
 			}
 		}
@@ -93,13 +104,21 @@ public class CocktailService {
 			System.out.println(prop.getProperty("3"));
 			System.out.println(prop.getProperty("4"));
 			
-			liquorStore.put("1", LiquorType.valueOf(prop.getProperty("1")));
-			liquorStore.put("2", LiquorType.valueOf(prop.getProperty("2")));
-			liquorStore.put("3", LiquorType.valueOf(prop.getProperty("3")));
-			liquorStore.put("4", LiquorType.valueOf(prop.getProperty("4")));
+			liquorStore.put(LiquorType.valueOf(prop.getProperty("1")), "1");
+			liquorStore.put(LiquorType.valueOf(prop.getProperty("2")), "2");
+			liquorStore.put(LiquorType.valueOf(prop.getProperty("3")), "3");
+			liquorStore.put(LiquorType.valueOf(prop.getProperty("4")), "4");
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
+	}
+	
+	private Cocktail getCocktailByType(CocktailType cocktailType) {
+		for(Cocktail cocktail : cocktails) {
+			if(cocktail.getType().equals(cocktailType)) return cocktail;
+		}
+		
+		return null;
 	}
 }

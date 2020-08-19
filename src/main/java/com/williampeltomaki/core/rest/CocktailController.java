@@ -34,7 +34,7 @@ public class CocktailController {
 	
 	@PostMapping("/make")
 	public void makeCockttail(@RequestParam String type){
-		cocktailService.makeCocktail();
+		cocktailService.makeCocktail(CocktailType.valueOf(type));
 		System.out.println("Cocktail is done");
 	}
 	
