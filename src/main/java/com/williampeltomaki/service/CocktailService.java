@@ -31,7 +31,7 @@ public class CocktailService {
 	
 	public void makeCocktail() {
 		try {
-		String command = "python /c start python run.py 11 5";
+		String command = "python run.py 11 5";
 		Process p = Runtime.getRuntime().exec(command);
 		}catch (Exception e) {
 			e.printStackTrace();
