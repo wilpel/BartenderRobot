@@ -1,5 +1,6 @@
 package com.williampeltomaki.service;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,6 +28,15 @@ public class CocktailService {
 			new RedbullVodka());
 	
 	private HashMap<String, LiquorType> liquorStore = new HashMap<>();
+	
+	public void makeCocktail() {
+		try {
+		String command = "python /c start python run.py 11 5";
+		Process p = Runtime.getRuntime().exec(command);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public List<CocktailType> getAvailableCocktails() {
 		List<CocktailType> availableCocktails = new ArrayList<CocktailType>();
