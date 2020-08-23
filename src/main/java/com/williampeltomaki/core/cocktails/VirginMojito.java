@@ -6,7 +6,7 @@ public class VirginMojito implements Cocktail{
 
 	@Override
 	public Map<LiquorType, Integer> getIngredients() {
-		return Map.of(LiquorType.WATER, 14, LiquorType.MOJITO_JUICE, 3);
+		return Map.of(LiquorType.WATER, 13, LiquorType.MOJITO_JUICE, 4);
 	}
 
 	@Override

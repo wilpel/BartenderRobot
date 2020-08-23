@@ -27,4 +27,15 @@ public class WebsiteController {
         }
 	}
 	
+	@GetMapping("/admin")
+	public String serveAdminPage(){
+		Resource webPage = new ClassPathResource("website/admin.html");
+		
+	    try (Reader reader = new InputStreamReader(webPage.getInputStream(), "UTF-8")) {
+            return FileCopyUtils.copyToString(reader);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+	}
+	
 }

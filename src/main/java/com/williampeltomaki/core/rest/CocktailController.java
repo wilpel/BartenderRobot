@@ -30,9 +30,19 @@ public class CocktailController {
 		return cocktailService.getAvailableCocktails();
 	}
 	
+	@GetMapping("/listTypes")
+	public LiquorType[] listLiquorTypes() {
+		return LiquorType.values();
+	}
+	
 	@PostMapping("/configure")
 	public void configureLiquorStore(@RequestBody HashMap<String, LiquorType> liquorTypes) {
 		cocktailService.storeCocktailProperties(liquorTypes);
+	}
+	
+	@PostMapping("/clean")
+	public void configureLiquorStore(@RequestParam int pump) {
+		cocktailService.clean(pump);
 	}
 	
 	@PostMapping("/make")

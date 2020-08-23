@@ -41,6 +41,10 @@ public class CocktailService {
 		
 	}
 	
+	public void clean(int pump) {
+		pourLiquid(pump, 40);
+	}
+	
 	private void pourLiquid(int pumpNumber, int duration) {
 		System.out.println("Pouring on pump " + pumpNumber + " for " + duration + "seconds");
 		try {
