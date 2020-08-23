@@ -10,6 +10,7 @@ public enum LiquorType {
 	TEQUILA,
 	MOJITO_JUICE,
 	VODKA,
-	RED_BULL
+	RED_BULL, 
+	WATER
 	
 }

@@ -16,6 +16,7 @@ import com.williampeltomaki.core.cocktails.LiquorType;
 import com.williampeltomaki.core.cocktails.Mojito;
 import com.williampeltomaki.core.cocktails.RedbullVodka;
 import com.williampeltomaki.core.cocktails.RumAndCoke;
+import com.williampeltomaki.core.cocktails.VirginMojito;
 import com.williampeltomaki.core.cocktails.VodkaShot;
 
 public class CocktailService {
@@ -24,7 +25,8 @@ public class CocktailService {
 			new RumAndCoke(),
 			new Mojito(),
 			new VodkaShot(),
-			new RedbullVodka());
+			new RedbullVodka(),
+			new VirginMojito());
 	
 	private HashMap<LiquorType, String> liquorStore = new HashMap<>();
 	

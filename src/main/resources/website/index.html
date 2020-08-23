@@ -38,9 +38,11 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
     <script>
+        const apiUrl = "127.0.0.1:8080"
+
         function listDrinks() {
             var request = new XMLHttpRequest()
-            request.open('GET', 'http://192.168.0.44:8080/v1/list', true)
+            request.open('GET', 'http://' + apiUrl + '/v1/list', true)
             request.onload = function () {
                 console.log(this.response);
                 var data = JSON.parse(this.response)
@@ -60,7 +62,7 @@
 
         function makeDrink(drink) {
             var request = new XMLHttpRequest()
-            request.open('POST', 'http://192.168.0.44:8080/v1/make?type=' + drink, true)
+            request.open('POST', 'http://' + apiUrl + '/v1/make?type=' + drink, true)
             request.send()
         }
 

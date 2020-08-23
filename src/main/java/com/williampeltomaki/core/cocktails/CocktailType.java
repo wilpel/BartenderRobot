@@ -8,6 +8,7 @@ public enum CocktailType {
 	MARGARITA,
 	MOJITO,
 	VODKA_SHOT,
-	REDBULL_VODKA
+	REDBULL_VODKA, 
+	VIRGIN_MOJITO
 	
 }
