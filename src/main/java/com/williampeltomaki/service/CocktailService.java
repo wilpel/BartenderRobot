@@ -49,14 +49,14 @@ public class CocktailService {
 			}
 	}
 	
-	public List<CocktailType> getAvailableCocktails() {
-		List<CocktailType> availableCocktails = new ArrayList<CocktailType>();
+	public List<Cocktail> getAvailableCocktails() {
+		List<Cocktail> availableCocktails = new ArrayList<Cocktail>();
 		loadCocktailProperties();
 		
 		cocktails.forEach((cocktail) -> {
 			
 			if(canMakeCocktail(cocktail)) {
-				availableCocktails.add(cocktail.getType());
+				availableCocktails.add(getCocktailByType(cocktail.getType()));
 			}
 			
 		});

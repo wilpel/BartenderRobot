@@ -14,4 +14,14 @@ public class VodkaShot implements Cocktail{
 		return CocktailType.VODKA_SHOT;
 	}
 
+	@Override
+	public String getName() {
+		return "Vodka Shot";
+	}
+
+	@Override
+	public String getImage() {
+		return "https://images.absolutdrinks.com/drink-images/Raw/Absolut/44b6f944-4902-4b51-9f88-cef9ac20db34.jpg?imwidth=500";
+	}
+
 }

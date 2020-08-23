@@ -6,5 +6,7 @@ public interface Cocktail {
 
 	Map<LiquorType, Integer> getIngredients();
 	CocktailType getType();
+	String getName();
+	String getImage();
 	
 }
